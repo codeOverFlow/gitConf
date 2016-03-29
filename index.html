@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Git &amp; Github</title>
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/myStyle.css">
+	<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<!-- Wrap the entire slide show in a div using the "reveal" class. -->
+	<div class="reveal">
+		<!-- Wrap all slides in a single "slides" class -->
+		<div class="slides">
+
+			<section>
+				<h1>La gestion de version</h1>
+				<h3>C'est un pic, c'est un cap, que dis-je c'est Git !</h3>
+			</section>
+
+			<section>
+				<h2>Quoi c'est ça Git ?</h2>
+				<p>
+					<q>
+						“Git est un logiciel de gestion de versions décentralisé”
+					</q>
+				</p>
+			</section>
+			<section>
+				<h2>Pourquoi utiliser Git</h2>
+				<ul>
+					<li>Un outil décentralisé</li>
+					<li class="fragment">Évite la perte de ses projets</li>
+					<li class="fragment">De nombreux sites et outils</li>
+					<li class="fragment">Une forte communauté</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Étape 1: Création du Dépôt</h2>
+				<p>Pour créer un dépôt vide</p>
+				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ mkdir repo && cd repo && git --bare init
+					</code></pre>
+			</section>
+			<section>
+				<h2>Commencer un nouveau projet</h2>
+				<p>Clonage du dépôt dans le dossier "foo"</p>
+				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				$ git clone path/to/repo foo && cd foo
+				</code></pre>
+				<p>Et... c'est tout</p>
+			</section>
+			<section>
+				<h2>Commencer avec un projet existant</h2>
+				<p>Aller dans le dossier du projet et initialiser un suivi de version</p>
+				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				$ cd foo && git init
+				</code></pre>
+				<p>Prérarer sa remote</p>
+				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				$ git remote add origin path/to/repo
+				</code></pre>
+			</section>
+			<section>
+				<section>
+					<h2>Étape 2: Gestion basique des fichiers</h2>
+					<p>Création d'un fichier</p>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				$ touch licorne
+				</code></pre>
+				</section>
+				<section>
+					<h2>Ajouter un fichier</h2>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git add licorne
+					</code></pre>
+				</section>
+				<section>
+					<h2>Supprimer un fichier en local et de l'index</h2>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git rm licorne
+					</code></pre>
+					<p>Supprimer uniquement le fichier de l'index</p>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git rm --cached licorne
+					</code></pre>
+				</section>
+				<section>
+					<h2>Renommer/Déplacer un fichier</h2>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git mv licorne loutre
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<h2>Étape 3: Vérifier l'état de son répertoire de travail</h2>
+				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git status
+					</code></pre>
+			</section>
+			<section>
+				<h2>Étape 4: Valider ses modifications</h2>
+				<p>Sur un fichier en particulier</p>
+				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git commit foo -m 'modification de foo'
+					</code></pre>
+				<p>Sur l'ensemble des modifications</p>
+				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git commit -am 'commit de masse !!!'
+					</code></pre>
+			</section>
+			<section>
+				<h2>Étape 5: Envoyer ses modifications</h2>
+				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git push origin master
+					</code></pre>
+			</section>
+			<section>
+				<section>
+					<h2>Les branches</h2>
+					<p>C'est un mécanisme très puissant de Git qui permet d'ajouter des fonctionalités en s'assurant qu'elles fonctionnent</p>
+				</section>
+				<section>
+					<h2>Lister les branche locales</h2>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git branch
+					</code></pre>
+				</section>
+				<section>
+					<h2>Création d'une branche</h2>
+					<p>Création de la branche</p>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git branch awesomeFeature
+					</code></pre>
+					<p>Suivi de la branche</p>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git checkout awesomeFeature
+					</code></pre>
+					<p>Raccourci</p>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git checkout -b awesomeFeature
+					</code></pre>
+				</section>
+				<section>
+					<h2>Ajout de la branche distante</h2>
+					<p>Dans la branche awesomeFeature</p>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git push -u origin awesomeFeature
+					</code></pre>
+				</section>
+				<section>
+					<h2>Supprimer la branche locale</h2>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git branch -d awesomeFeature
+					</code></pre>
+				</section>
+				<section>
+					<h2>Supprimer la branche distante</h2>
+					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git push origin :awesomeFeature
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<h2>Différents outils</h2>
+				<ul>
+					<li>Github: Utilisation de git en ligne pour des projets OpenSources</li>
+					<li>GitLab: Comme Github mais permettant l'utilisation de dépôts privés gratuitement</li>
+					<li>GitKraken: GUI pour Git cross-plateform et bien pensée</li>
+					<li>git-prompt.sh: Script shell permettant d'afficher le nom de la branche courante dans son prompt</li>
+				</ul>
+			</section>
+		</div>
+		<footer>
+			<small>Created by <a href="http://github.com/CodeOverFlow">Adrien Bodineau</a></small>
+		</footer>
+	</div>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+         // Required, even if empty.
+         Reveal.initialize({
+         	width: 1920,
+         	height: 1080,	
+         	dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'plugin/zoom-js/zoom.js', async: true },
+
+        // Speaker notes
+        { src: 'plugin/notes/notes.js', async: true },
+
+        // MathJax
+        { src: 'plugin/math/math.js', async: true }
+        ]});
+    </script>
+</body>
+</html>
