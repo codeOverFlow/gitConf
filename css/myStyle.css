@@ -1,7 +1,23 @@
+.beauty {
+	font-family: "Source Sans Pro",Helvetica,sans-serif;
+	font-weight: normal;
+	color: #FFF;
+}
+
 footer {
 	position: absolute;
 	bottom: 16px;
 	text-align: center;
 	left: 50%;
-	margin-left: -158px !important;
+	margin-left: -93px !important;
+}
+
+footer a {
+	color: #42AFFA;
+	text-decoration: none;
+	transition: color 0.15s ease 0s;
+}
+
+footer a:hover {
+	color: #8DCFFC;
 }
