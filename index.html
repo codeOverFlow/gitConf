@@ -135,6 +135,21 @@
 					</code></pre>
 			</section>
 			<section>
+				<h2>Bonus: Récupérer des modifications</h2>
+				<p>Récupérer les données</p>
+				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git fetch origin master
+					</code></pre>
+				<p>Opérer la fusion</p>
+				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git merge FETCH_HEAD
+					</code></pre>
+				<p>Raccourci</p>
+				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					$ git pull origin master
+					</code></pre>
+			</section>
+			<section>
 				<section>
 					<h2>Les branches</h2>
 					<p>C'est un mécanisme très puissant de Git qui permet d'ajouter des fonctionalités en s'assurant qu'elles fonctionnent</p>
