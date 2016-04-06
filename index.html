@@ -57,14 +57,21 @@
 			<section>
 				<h2>Étape 1: Création du Dépôt</h2>
 				<p>Pour créer un dépôt vide</p>
-				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ mkdir repo && cd repo && git --bare init
+					</code></pre>
+			</section>
+			<section>
+				<h2>S'authentifier</h2>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
+					$ git config --global user.name "magicarp"
+$ git config --global user.email "toto@mail.fr"
 					</code></pre>
 			</section>
 			<section>
 				<h2>Commencer un nouveau projet</h2>
 				<p>Clonage du dépôt dans le dossier "foo"</p>
-				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 				$ git clone path/to/repo foo && cd foo
 				</code></pre>
 				<p>Et... c'est tout</p>
@@ -72,11 +79,11 @@
 			<section>
 				<h2>Commencer avec un projet existant</h2>
 				<p>Aller dans le dossier du projet et initialiser un suivi de version</p>
-				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 				$ cd foo && git init
 				</code></pre>
 				<p>Prérarer sa remote</p>
-				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 				$ git remote add origin path/to/repo
 				</code></pre>
 			</section>
@@ -84,69 +91,84 @@
 				<section>
 					<h2>Étape 2: Gestion basique des fichiers</h2>
 					<p>Création d'un fichier</p>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 				$ touch licorne
 				</code></pre>
 				</section>
 				<section>
 					<h2>Ajouter un fichier</h2>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git add licorne
 					</code></pre>
 				</section>
 				<section>
 					<h2>Supprimer un fichier en local et de l'index</h2>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git rm licorne
 					</code></pre>
 					<p>Supprimer uniquement le fichier de l'index</p>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git rm --cached licorne
 					</code></pre>
 				</section>
 				<section>
 					<h2>Renommer/Déplacer un fichier</h2>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git mv licorne loutre
 					</code></pre>
 				</section>
 			</section>
 			<section>
 				<h2>Étape 3: Vérifier l'état de son répertoire de travail</h2>
-				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git status
 					</code></pre>
 			</section>
 			<section>
 				<h2>Étape 4: Valider ses modifications</h2>
 				<p>Sur un fichier en particulier</p>
-				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git commit foo -m 'modification de foo'
 					</code></pre>
 				<p>Sur l'ensemble des modifications</p>
-				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git commit -am 'commit de masse !!!'
 					</code></pre>
 			</section>
 			<section>
 				<h2>Étape 5: Envoyer ses modifications</h2>
-				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git push origin master
 					</code></pre>
 			</section>
 			<section>
-				<h2>Bonus: Récupérer des modifications</h2>
+				<h2>Récupérer des modifications</h2>
 				<p>Récupérer les données</p>
-				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git fetch origin master
 					</code></pre>
 				<p>Opérer la fusion</p>
-				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git merge FETCH_HEAD
 					</code></pre>
 				<p>Raccourci</p>
-				<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git pull origin master
+					</code></pre>
+			</section>
+			<section>
+				<h2>Gérer les conflits</h2>
+				<p>1. Édition du fichier en conflit pour fusionner les bonnes modifications</p>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
+					$ vim licorne
+					</code></pre>
+				<p>2. Marquer le conflit comme résolu</p>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
+					$ git add licorne
+					</code></pre>
+				<p>3. Valider la résolution</p>
+				<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
+					$ git commit -m 'fin du conflit sur la licorne'
 					</code></pre>
 			</section>
 			<section>
@@ -156,41 +178,41 @@
 				</section>
 				<section>
 					<h2>Lister les branche locales</h2>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git branch
 					</code></pre>
 				</section>
 				<section>
 					<h2>Création d'une branche</h2>
 					<p>Création de la branche</p>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git branch awesomeFeature
 					</code></pre>
 					<p>Suivi de la branche</p>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git checkout awesomeFeature
 					</code></pre>
 					<p>Raccourci</p>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git checkout -b awesomeFeature
 					</code></pre>
 				</section>
 				<section>
 					<h2>Ajout de la branche distante</h2>
 					<p>Dans la branche awesomeFeature</p>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git push -u origin awesomeFeature
 					</code></pre>
 				</section>
 				<section>
 					<h2>Supprimer la branche locale</h2>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git branch -d awesomeFeature
 					</code></pre>
 				</section>
 				<section>
 					<h2>Supprimer la branche distante</h2>
-					<pre style="width: 30%;"><code class="hljs nohighlight" data-trim>
+					<pre style="width: 40%;"><code class="hljs nohighlight" data-trim>
 					$ git push origin :awesomeFeature
 					</code></pre>
 				</section>
